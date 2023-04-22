@@ -24,7 +24,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ubuntu-server }}
         with:
           args: |
-            --source=./root/test-repos-for-cicd
-            --server=91.200.151.45:8000
+            --source=~/root/test-repos-for-cicd
+            --server=91.200.151.45
             --username=root
-            --path=./root/test-repos-for-cicd
+            --path=~/root/test-repos-for-cicd
