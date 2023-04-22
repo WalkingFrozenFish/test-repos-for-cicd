@@ -30,12 +30,12 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.2.5
         env:
-          
-        with:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: ${{ secrets.USER }}
           path: ./
+        # with:
+          
           # args: |
             # --source=./root/test-repos-for-cicd/
             # --path=./
