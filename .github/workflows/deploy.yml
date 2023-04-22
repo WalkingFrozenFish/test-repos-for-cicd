@@ -33,9 +33,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ubuntu-server }}
         with:
           args: |
-            --source=./
+            --source=~/test-repos-for-cicd
             --server=91.200.151.45
             --username=root
-            --path=/root/test-repos-for-cicd
+            --path=~/test-repos-for-cicd
       - name: Reload PM2
         run: pm2 reload myapp
