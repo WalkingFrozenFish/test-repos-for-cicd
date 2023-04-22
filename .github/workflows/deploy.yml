@@ -13,34 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install PM2
-        run: npm install pm2 -g
-
-      
-
-      - name: Deploy to server
+      - name: Deploy to production
         uses: easingthemes/ssh-deploy@v2.2.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USER }}
         with:
-          args: |
-            
-            --path=/${{ secrets.USER }}/test-repos-for-cicd/
-      # - name: Reload PM2
-      #   run: pm2 reload myapp
+          server: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          # port: ${{ secrets.SERVER_PORT }}
+          source: ${{ github.workspace }}
+          target: /test-repos-for-cicd
+          args: -avz --delete
 
-      - name: Start app with PM2
-        run: pm2 start npm --name "myapp" -- start
-
-
-        # --source=/home/runner/work/test-repos-for-cicd/test-repos-for-cicd/
