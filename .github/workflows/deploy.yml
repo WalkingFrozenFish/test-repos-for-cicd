@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: Start the server
-        run: npm start
+      # - name: Start the server
+      #   run: npm start
 
       - name: Start the app with PM2
         run: pm2 start npm --name "test-server-node-cicd" -- start
@@ -27,7 +27,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ubuntu-server }}
         with:
           args: |
-            --source=~/test-repos-for-cicd
+            --source=./root/test-repos-for-cicd
             --server=91.200.151.45
             --username=root
-            --path=~/test-repos-for-cicd
+            --path=./root/test-repos-for-cicd
