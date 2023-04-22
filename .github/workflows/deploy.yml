@@ -12,18 +12,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
       - name: Install dependencies
         run: npm install
-      - name: Start the server
-        run: node index.js
 
-      # - name: Start the app with PM2
-      #   run: pm2 start ./root/test-repos-for-cicd/index.js
-      # - name: Start app with startup server
-      #   run: pm2 startup
-      # - name: Save config pm2
-      #   run: pm2 save
-    
+      - name: Install PM2
+        run: npm install pm2 -g
+
+      - name: Start app with PM2
+        run: pm2 start npm --name "myapp" -- start
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.2.5
@@ -31,7 +33,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ubuntu-server }}
         with:
           args: |
-            --source=~/test-repos-for-cicd/
+            --source=./
             --server=91.200.151.45
             --username=root
-            --path=~/test-repos-for-cicd/
+            --path=/root/test-repos-for-cicd
+      - name: Reload PM2
+        run: pm2 reload myapp
