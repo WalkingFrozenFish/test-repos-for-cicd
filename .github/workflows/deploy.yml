@@ -25,6 +25,6 @@ jobs:
         with:
           args: |
             --source=./root/test-repos-for-cicd
-            --server=91.200.151.45
+            --server=91.200.151.45:8000
             --username=root
             --path=./root/test-repos-for-cicd
