@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.2.5
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.ubuntu-server }}
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
         with:
           args: |
             --source=~/test-repos-for-cicd
