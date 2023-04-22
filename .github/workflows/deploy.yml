@@ -24,8 +24,7 @@ jobs:
       - name: Install PM2
         run: npm install pm2 -g
 
-      - name: Start app with PM2
-        run: pm2 start npm --name "myapp" -- start
+      
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.2.5
@@ -35,10 +34,13 @@ jobs:
           REMOTE_USER: ${{ secrets.USER }}
         with:
           args: |
-            --source=./
-            --path=test-repos-for-cicd/
-      - name: Reload PM2
-        run: pm2 reload myapp
+            --source=/
+            --path=/home/test-repos-for-cicd/
+      # - name: Reload PM2
+      #   run: pm2 reload myapp
+
+      - name: Start app with PM2
+        run: pm2 start npm --name "myapp" -- start
 
 
         
