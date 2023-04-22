@@ -33,12 +33,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: ${{ secrets.USER }}
-          path: test-repos-for-cicd/
-        # with:
-          
-          # args: |
-            # --source=./root/test-repos-for-cicd/
-            # --path=./
+          # path: test-repos-for-cicd/
+        with:
+          args: |
+            --source=root/test-repos-for-cicd/
+            --path=root/test-repos-for-cicd/
       - name: Reload PM2
         run: pm2 reload myapp
 
