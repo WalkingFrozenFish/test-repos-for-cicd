@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Start the server
-        run: node index.js
+        run: node ~/test-repos-for-cicd/index.js
 
       # - name: Start the app with PM2
       #   run: pm2 start ./root/test-repos-for-cicd/index.js
