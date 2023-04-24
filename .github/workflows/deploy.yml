@@ -15,6 +15,9 @@ jobs:
         
       - name: Install dependencies
         run: npm install 
+      
+      - name: Install dependencies
+        run: npm restart 
         
       - name: SSH into server and update code
         uses: appleboy/ssh-action@master
@@ -26,5 +29,5 @@ jobs:
             cd /root/test-repos/test-repos-for-cicd
             git pull
             npm install
-            npm restart
+            npm start
 
