@@ -15,7 +15,10 @@ jobs:
 
       - name: Stop running app
         run: pkill node || true
-        
+
+      - name: Start app
+        run: npm install
+      
       - name: Start app
         run: npm start
         
