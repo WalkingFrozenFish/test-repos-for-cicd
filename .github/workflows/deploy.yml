@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cd /root/test-repos
+            cd /root/test-repos/test-repos-for-cicd
             git pull origin main
             npm install
             npm restart
