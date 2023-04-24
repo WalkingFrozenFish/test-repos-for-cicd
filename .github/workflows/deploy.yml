@@ -41,5 +41,5 @@ jobs:
             cd /home/runner/work/test-repos-for-cicd/test-repos-for-cicd/
             git pull
             npm install
-            pm2 start index.js --name my-app
+            pm2 start index.js --name my-app -f
 
