@@ -13,9 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Stop process
-        run: |
-          pkill -f "npm start"
+      # - name: Stop process
+      #   run: |
+      #     pkill -f "npm start"
         
       - name: Install dependencies
         run: npm install
@@ -30,5 +30,6 @@ jobs:
             cd /root/test-repos/test-repos-for-cicd
             git pull origin main
             npm install
-            npm restart
+            pkill -f "npm start"
+            npm start
 
