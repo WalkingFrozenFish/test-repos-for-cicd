@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Install dependencies
-        run: npm install
+        run: npm install 
         
       - name: SSH into server and update code
         uses: appleboy/ssh-action@master
@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             cd /root/test-repos/test-repos-for-cicd
-            git pull origin main
+            git pull
             npm install
             npm restart
 
