@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Server
 
 on:
   push:
@@ -8,17 +8,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Deploy to production
-        uses: easingthemes/ssh-deploy@v2.2.5
+        
+      - name: Install dependencies
+        run: npm install
+        
+      - name: SSH into server and update code
+        uses: appleboy/ssh-action@master
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
-          SOURCE: ${{ github.workspace }}
-          TARGET: /test-repos-for-cicd
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            cd /root/test-repos
+            git pull origin main
+            npm install
+            npm restart
 
