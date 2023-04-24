@@ -35,6 +35,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
+            eval "$(ssh-agent -s)"
+            ssh-add ${{ secrets.SSH_PRIVATE_KEY }}
             cd /home/runner/work/test-repos-for-cicd/test-repos-for-cicd/
             git pull
             npm install
