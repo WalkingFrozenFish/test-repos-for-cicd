@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - [main]
+      - main
 
 jobs:
   deploy:
@@ -13,8 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Stop running app
-        run: pkill node || true
+      # - name: Stop running app
+      #   run: pkill node || true
 
       # - name: Change directory
       #   run: cd /home/runner/work/test-repos-for-cicd/test-repos-for-cicd/
@@ -27,6 +27,9 @@ jobs:
       
       # - name: Start app
       #   run: npm start
+
+      - name: Install PM2
+        run: npm install pm2 -g
         
       - name: SSH into server and update code
         uses: appleboy/ssh-action@master
@@ -38,5 +41,5 @@ jobs:
             cd /home/runner/work/test-repos-for-cicd/test-repos-for-cicd/
             git pull
             npm install
-            npm start
+            pm2 start index.js --name my-app
 
