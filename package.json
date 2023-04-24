@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js --name=my-app",
-    "stop": "pkill my-app"
+    "start": "node index.js --process-name=my-app",
+    "restart": "pkill my-app && npm start"
   },
   "author": "",
   "license": "ISC",
