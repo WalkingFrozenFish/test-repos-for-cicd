@@ -19,8 +19,8 @@ jobs:
       - name: Start app
         run: npm install
       
-      - name: Start app
-        run: npm start
+      # - name: Start app
+      #   run: npm start
         
       - name: SSH into server and update code
         uses: appleboy/ssh-action@master
