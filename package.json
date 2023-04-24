@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js --name=my-app"
+    "start": "node index.js --name=my-app",
+    "stop": "pkill my-app"
   },
   "author": "",
   "license": "ISC",

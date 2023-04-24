@@ -15,8 +15,7 @@ jobs:
 
       - name: Stop process
         run: |
-          pkill node
-          pkill npm\ start
+          npm stop
         
       - name: Install dependencies
         run: npm install
