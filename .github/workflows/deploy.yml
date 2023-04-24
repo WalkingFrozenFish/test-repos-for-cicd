@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Stop running app
+        run: pkill node || true
         
-      - name: Install dependencies
-        run: npm install 
-      
-      - name: Install dependencies
-        run: npm restart 
+      - name: Start app
+        run: npm start
         
       - name: SSH into server and update code
         uses: appleboy/ssh-action@master
